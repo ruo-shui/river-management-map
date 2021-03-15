@@ -1,0 +1,141 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  font-family: Arial, Helvetica, sans-serif;
+  background: url(../images/bg.jpg) no-repeat #00065b;
+  //background-color: #06164a;
+  background-size: 100% 100%;
+}
+
+header {
+  display: flex;
+  height: 9%;
+  color: white;
+  h1{
+    font-size: 30px;
+  }
+  .left {
+    flex: 1;
+  }
+
+  .center {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    flex: 1;
+  }
+
+  .right {
+    flex: 1;
+  }
+
+  ul{
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    li{
+      padding: 6px;
+      border: 1px solid #4bfff7;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  }
+}
+
+section {
+  height: 91%;
+  padding: 15px 40px 40px 45px;
+  display: flex;
+  color: white;
+  .title{
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    height: 35px;
+    padding-top: 5px;
+    background-color: #112a75;
+  }
+  .left{
+    flex: 2;
+    .top{
+      height: calc(50% - 10px);
+      background-color: #06164a;
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .bottom{
+      height: calc(50% - 10px);
+      background-color: #06164a;
+      position: relative;
+    }
+  }
+  .center{
+    flex: 3;
+    margin: 0 10px;
+  }
+  .right{
+
+    flex: 2;
+    .top{
+      height: calc(50% - 10px);
+      background-color: #06164a;
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .bottom{
+      height: calc(50% - 10px);
+      background-color: #06164a;
+      position: relative;
+    }
+  }
+  .border{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    &.b1{
+      border-top: 2px solid #0bb6b2;
+      border-left: 2px solid #0bb6b2;
+    }
+    &.b2{
+      border-top: 2px solid #0bb6b2;
+      border-right: 2px solid #0bb6b2;
+      right: 0;
+    }
+    &.b3{
+      border-bottom: 2px solid #0bb6b2;
+      border-right: 2px solid #0bb6b2;
+      bottom: 0;
+      right: 0;
+    }
+    &.b4{
+      border-bottom: 2px solid #0bb6b2;
+      border-left: 2px solid #0bb6b2;
+      bottom: 0;
+    }
+  }
+
+  .clear-fix::after{
+    content: "";
+    display: block;
+    height: 0;
+    clear:both;
+    visibility: hidden;
+  }
+
+  .clear-fix {
+    /* 触发 hasLayout */
+    zoom: 1;
+  }
+}

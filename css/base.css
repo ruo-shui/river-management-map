@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+li {
+  list-style: none;
+}
+body {
+  height: 100vh;
+  width: 100vw;
+  font-family: Arial, Helvetica, sans-serif;
+  background: url(../images/bg.jpg) no-repeat #00065b;
+  background-size: 100% 100%;
+}
+header {
+  display: flex;
+  height: 9%;
+  color: white;
+}
+header h1 {
+  font-size: 30px;
+}
+header .left {
+  flex: 1;
+}
+header .center {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  flex: 1;
+}
+header .right {
+  flex: 1;
+}
+header ul {
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+header ul li {
+  padding: 6px;
+  border: 1px solid #4bfff7;
+  border-radius: 10px;
+  cursor: pointer;
+}
+section {
+  height: 91%;
+  padding: 15px 40px 40px 45px;
+  display: flex;
+  color: white;
+}
+section .title {
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  height: 35px;
+  padding-top: 5px;
+  background-color: #112a75;
+}
+section .left {
+  flex: 2;
+}
+section .left .top {
+  height: calc(50% - 10px);
+  background-color: #06164a;
+  position: relative;
+  margin-bottom: 20px;
+}
+section .left .bottom {
+  height: calc(50% - 10px);
+  background-color: #06164a;
+  position: relative;
+}
+section .center {
+  flex: 3;
+  margin: 0 10px;
+}
+section .right {
+  flex: 2;
+}
+section .right .top {
+  height: calc(50% - 10px);
+  background-color: #06164a;
+  position: relative;
+  margin-bottom: 20px;
+}
+section .right .bottom {
+  height: calc(50% - 10px);
+  background-color: #06164a;
+  position: relative;
+}
+section .border {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+}
+section .border.b1 {
+  border-top: 2px solid #0bb6b2;
+  border-left: 2px solid #0bb6b2;
+}
+section .border.b2 {
+  border-top: 2px solid #0bb6b2;
+  border-right: 2px solid #0bb6b2;
+  right: 0;
+}
+section .border.b3 {
+  border-bottom: 2px solid #0bb6b2;
+  border-right: 2px solid #0bb6b2;
+  bottom: 0;
+  right: 0;
+}
+section .border.b4 {
+  border-bottom: 2px solid #0bb6b2;
+  border-left: 2px solid #0bb6b2;
+  bottom: 0;
+}
+section .clear-fix::after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+section .clear-fix {
+  /* 触发 hasLayout */
+  zoom: 1;
+}
+/*# sourceMappingURL=base.css.map */
