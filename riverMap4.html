@@ -43,7 +43,7 @@
           <table>
             <tr>
               <td>断面名称</td>
-              <td>蕴川路桥</td>
+              <td class="sta">练祁河蕴川路桥</td>
             </tr>
             <tr>
               <td>行政区划</td>
@@ -51,19 +51,19 @@
             </tr>
             <tr>
               <td>目标水质</td>
-              <td>Ⅱ</td>
+              <td>Ⅲ类</td>
             </tr>
             <tr>
               <td>水质类别</td>
-              <td>Ⅱ</td>
+              <td class="sta">Ⅲ类</td>
             </tr>
             <tr>
               <td>是否达标</td>
-              <td>是</td>
+              <td class="sta">是</td>
             </tr>
             <tr>
               <td>采集时间</td>
-              <td>2020-06-07</td>
+              <td>2020-12-07</td>
             </tr>
           </table>
 
@@ -77,32 +77,6 @@
       <span class="border b3"></span>
       <span class="border b4"></span>
       <div class="title">河流水质要素及时间变化</div>
-      <div class="element">
-        <ul>
-          <li>水温</li>
-          <li>总氮</li>
-          <li>总磷</li>
-          <li class="active">溶解氧</li>
-          <li>化学需氧量</li>
-        </ul>
-      </div>
-      <div id="water-element"></div>
-    </div>
-  </div>
-  <div class="center">
-    <div class="top">
-      <span class="border b1"></span>
-      <span class="border b2"></span>
-      <span class="border b3"></span>
-      <span class="border b4"></span>
-      <img src="images/map.png" alt="">
-    </div>
-    <div class="bottom">
-      <span class="border b1"></span>
-      <span class="border b2"></span>
-      <span class="border b3"></span>
-      <span class="border b4"></span>
-      <div class="title">河流水质达标情况</div>
       <div class="situation">
         <ul>
           <li>国考断面： <span>5个</span></li>
@@ -113,6 +87,41 @@
       <div class="chart">
         <div class="pie"></div>
         <div class="line"></div>
+      </div>
+    </div>
+  </div>
+  <div class="center">
+    <span class="border b1"></span>
+    <span class="border b2"></span>
+    <span class="border b3"></span>
+    <span class="border b4"></span>
+    <div id="mapContainer"></div>
+    <div class="layer">
+      <div class="name">图层控制</div>
+      <div class="input-item">
+        <input type='checkbox' id="level" name='level' value='level' checked>
+        <span class="input-text">水质类别</span>
+      </div>
+      <div class="input-item">
+        <input type='checkbox' id="govern" name='govern' value='govern'>
+        <span class="input-text">治理对象</span>
+      </div>
+      <div class="input-item">
+        <input type='checkbox' id="divisionBS" name='divisionBS' value='divisionBS'>
+        <span class="input-text">行政区划</span>
+      </div>
+    </div>
+    <div class="timeLine">
+      <div class="img">
+        <img src="images/播放1.png" alt="">
+      </div>
+      <div class="dateAxis">
+        <div class="text" id="text">
+
+        </div>
+        <div class="axis" id="axis">
+
+        </div>
       </div>
     </div>
   </div>
@@ -136,7 +145,7 @@
       <span class="border b2"></span>
       <span class="border b3"></span>
       <span class="border b4"></span>
-      <div class="title">水环境治理对象</div>
+      <div class="title">治理目标及措施</div>
       <table>
         <tr>
           <th>编号</th>
@@ -150,33 +159,33 @@
           <td>1</td>
           <td>垃圾清理</td>
           <td>罗泾镇</td>
-          <td></td>
-          <td></td>
+          <td>无垃圾</td>
+          <td>沿河清理</td>
           <td>完成治理</td>
         </tr>
         <tr>
           <td>2</td>
           <td>截污治理</td>
           <td>罗泾镇</td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>无污水</td>
+          <td>严查排污</td>
+          <td>未完成治理</td>
         </tr>
         <tr>
           <td>3</td>
           <td>水体垃圾清理</td>
           <td>罗泾镇</td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>无水体垃圾</td>
+          <td>沿河清理</td>
+          <td>完成治理</td>
         </tr>
         <tr>
           <td>4</td>
           <td>清淤疏浚</td>
           <td>罗泾镇</td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>无淤泥</td>
+          <td>机械清淤</td>
+          <td>未完成治理</td>
         </tr>
       </table>
     </div>
@@ -184,6 +193,10 @@
 </section>
 
 <script src="js/echarts.min.js"></script>
-<script src="js/riverMap4.js"></script>
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=ee15d5aec03ea6f36202adcab91953b3&plugin=AMap.DistrictLayer"></script>
+<!--<script src="js/amaps.js"></script>-->
+<script src="data/module4Data.js"></script>
+<script src="js/module4/riverEcharts4.js"></script>
+<script src="js/module4/riverMap4.js"></script>
 </body>
 </html>

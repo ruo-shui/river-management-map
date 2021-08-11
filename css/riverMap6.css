@@ -1,0 +1,37 @@
+header .active {
+  background-color: #2b4864;
+}
+section .left .top table {
+  width: 90%;
+  height: calc(80% - 35px);
+  border-collapse: collapse;
+  margin: 8% auto;
+  text-align: center;
+  font-size: 14px;
+}
+section .left .top table td {
+  color: #c5c5c5;
+}
+section .left .top table td,
+section .left .top table th {
+  border: 1px solid #12606e;
+}
+section .left .top table .active {
+  background-color: #112c83;
+}
+section .center {
+  height: 100%;
+  background-color: #06164a;
+  position: relative;
+}
+section .center #mapContainer {
+  height: 100%;
+}
+section .amap-logo {
+  display: none;
+  opacity: 0 !important;
+}
+section .amap-copyright {
+  opacity: 0;
+}
+/*# sourceMappingURL=riverMap6.css.map */

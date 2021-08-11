@@ -1,14 +1,10 @@
 // 监测站指标变化折线图
-(function () {
+function lineSta (level = 3) {
   // 基于准备好的dom，初始化echarts实例
   var myChart = echarts.init(document.querySelector(".change"));
   // (1)准备数据
-  var data = {
-    year: [
-      [1, 3, 2, 3, 4, 3, 3]
-    ]
-  };
-
+  var data = [3, 4, 4, 5, 4]
+  data.push(level)
   // 2. 指定配置和数据
   var option = {
     color: ["#00f2f1", "#ed3f35"],
@@ -50,12 +46,12 @@
       type: "category",
       boundaryGap: false,
       data: [
-        "1月",
-        "2月",
-        "3月",
-        "4月",
-        "5月",
-        "6月"
+        "7月",
+        "8月",
+        "9月",
+        "10月",
+        "11月",
+        "12月"
       ],
       // 去除刻度
       axisTick: {
@@ -63,6 +59,7 @@
       },
       // 修饰刻度标签的颜色
       axisLabel: {
+        interval:(i,v)=> true,
         color: "rgba(255,255,255,.7)"
       },
       // 去除x坐标轴的颜色
@@ -76,7 +73,7 @@
       axisTick: {
         show: false
       },
-      max: 5,
+      max: 6,
       // 修饰刻度标签的颜色
       axisLabel: {
         color: "rgba(255,255,255,.7)",
@@ -92,8 +89,10 @@
             texts.push('Ⅲ');
           } else if (value <= 4) {
             texts.push('Ⅳ');
-          } else {
+          } else if(value <= 5){
             texts.push('Ⅴ');
+          } else {
+            texts.push('劣Ⅴ');
           }
           return texts;
         }
@@ -111,7 +110,7 @@
         type: "line",
         // 是否让线条圆滑显示
         smooth: true,
-        data: data.year[0]
+        data: data
       }
     ]
   };
@@ -123,128 +122,8 @@
   window.addEventListener("resize", function () {
     myChart.resize();
   });
-})();
-
-
-//河流水质要素及时间变化折线图
-(function () {
-  // 基于准备好的dom，初始化echarts实例
-  var myChart = echarts.init(document.querySelector("#water-element"));
-  console.log(myChart)
-  // (1)准备数据
-  var data = {
-    year: [
-      [3.98, 4.12, 4.39, 4.7, 4.7, 4.37, 4, 3.02, 4.07, 3.99, 5.26, 5.13],
-      [3.85, 4.01, 4.37, 4, 4.21, 4.31, 4.12, 3.01, 4.01, 4.11, 5.14, 5.05]
-    ]
-  };
-
-  // 2. 指定配置和数据
-  var option = {
-    color: ["#00f2f1", "#ed3f35"],
-    tooltip: {
-      // 通过坐标轴来触发
-      trigger: "axis"
-    },
-    legend: {
-      // 距离容器10%
-      right: "10%",
-      // top:"5%",
-      // 修饰图例文字的颜色
-      textStyle: {
-        color: "#4c9bfd"
-      }
-      // 如果series 里面设置了name，此时图例组件的data可以省略
-      // data: ["邮件营销", "联盟广告"]
-    },
-    grid: {
-      top: "10%",
-      left: "3%",
-      right: "8%",
-      bottom: "6%",
-      show: true,
-      borderColor: "#012f4a",
-      containLabel: true
-    },
-
-    xAxis: {
-      type: "category",
-      boundaryGap: false,
-      splitNumber: 12,
-      data: [
-        "1月",
-        "2月",
-        "3月",
-        "4月",
-        "5月",
-        "6月",
-        "7月",
-        "8月",
-        "9月",
-        "10月",
-        "11月",
-        "12月"
-      ],
-      // 去除刻度
-      axisTick: {
-        show: false
-      },
-      // 修饰刻度标签的颜色
-      axisLabel: {
-        color: "rgba(255,255,255,.7)",
-        interval: 0,
-      },
-      // 去除x坐标轴的颜色
-      axisLine: {
-        show: false
-      }
-    },
-    yAxis: {
-      type: "value",
-      // 去除刻度
-      axisTick: {
-        show: false
-      },
-      min: 2,
-      max: 6,
-      splitNumber: 4,
-      // 修饰刻度标签的颜色
-      axisLabel: {
-        color: "rgba(255,255,255,.7)",
-      },
-      // 修改y轴分割线的颜色
-      splitLine: {
-        lineStyle: {
-          color: "#012f4a"
-        }
-      }
-    },
-    series: [
-      {
-        name: "2019",
-        type: "line",
-        // 是否让线条圆滑显示
-        smooth: false,
-        data: data.year[0]
-      },
-      {
-        name: "2020",
-        type: "line",
-        // 是否让线条圆滑显示
-        smooth: false,
-        data: data.year[1]
-      }
-    ]
-  };
-  // 3. 把配置和数据给实例对象
-  myChart.setOption(option);
-
-  // 重新把配置好的新数据给实例对象
-  myChart.setOption(option);
-  window.addEventListener("resize", function () {
-    myChart.resize();
-  });
-})();
+}
+lineSta();
 
 //河流水质达标情况饼图
 (function () {
@@ -291,7 +170,7 @@
         type: "pie",
         // 如果radius是百分比则必须加引号
         radius: ["0", "50%"],
-        center: ["50%", "65%"],
+        center: ["50%", "68%"],
         // roseType: "radius",
         data: [
           {value: 12, name: "Ⅰ"},
@@ -328,25 +207,24 @@
 (function () {
   // 基于准备好的dom，初始化echarts实例
   var myChart = echarts.init(document.querySelector(".chart .line"));
-  console.log(myChart)
   // (1)准备数据
   var data = {
     year: [
-      [3.98, 4.12, 4.39, 4.7, 4.7, 4.37, 4, 3.02, 4.07, 3.99, 5.26, 5.13],
-      [3.85, 4.01, 4.37, 4, 4.21, 4.31, 4.12, 3.01, 4.01, 4.11, 5.14, 5.05]
+      [4, 5, 4, 25, 20, 21, 26, 26, 28, 2, 2, 5],
+      [100, 100, 100, 96, 83, 95, 96, 100, 100, 67, 100, 83]
     ]
   };
 
   // 2. 指定配置和数据
   var option = {
-    color: ["#ff9f7f", "#27b2f1"],
+    color: ["#27b2f1","#ff9f7f"],
     tooltip: {
       // 通过坐标轴来触发
       trigger: "axis"
     },
     legend: {
       // 距离容器10%
-      right: "10%",
+      right: "0",
       top:"10%",
       // 修饰图例文字的颜色
       textStyle: {
@@ -400,7 +278,7 @@
       axisLabel: {
         color: "rgba(255,255,255,.7)",
         // interval: 0,
-        rotate:45
+        rotate: 50
       },
       // 去除x坐标轴的颜色
       axisLine: {
@@ -413,9 +291,10 @@
       axisTick: {
         show: false
       },
-      min: 2,
-      max: 6,
-      splitNumber: 4,
+      min: 0,
+      max: 30,
+      splitNumber: 5,
+      interval:6,
       // 修饰刻度标签的颜色
       axisLabel: {
         color: "rgba(255,255,255,.7)",
@@ -432,9 +311,10 @@
       axisTick: {
         show: false
       },
-      min: 2,
-      max: 6,
-      splitNumber: 4,
+      min: 0,
+      max: 100,
+      splitNumber: 5,
+      interval:20,
       // 修饰刻度标签的颜色
       axisLabel: {
         color: "rgba(255,255,255,.7)",
@@ -450,18 +330,18 @@
     ],
     series: [
       {
+        name: "达标个数",
+        type: "bar",
+        barWidth: "40%",
+        data: data.year[0]
+      },{
         name: "达标率",
         type: "line",
         // 是否让线条圆滑显示
         smooth: false,
-        data: data.year[0]
+        data: data.year[1],
+        yAxisIndex: 1,
       },
-      {
-        name: "达标个数",
-        type: "bar",
-        barWidth: "40%",
-        data: data.year[1]
-      }
     ]
   };
   // 3. 把配置和数据给实例对象
@@ -494,10 +374,10 @@
       text: "治理对象类型统计",
       textStyle: {
         color: "#fff",
-        fontSize: 13
+        fontSize: 15
       },
       top: "10%",
-      left: "center",
+      left: "20%",
     },
     tooltip: {
       trigger: "item",

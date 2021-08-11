@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>河道管理地图电子大屏系统</title>
+  <link rel="stylesheet" href="css/base.css"/>
+  <link rel="stylesheet" href="css/riverMap6.css"/>
+</head>
+<body>
+<header>
+  <div class="left">
+    <ul>
+      <li>水资源保护</li>
+      <li>水岸线管理</li>
+      <li>水污染防治</li>
+    </ul>
+  </div>
+  <div class="center">
+    <h1>河道管理地图电子大屏系统</h1>
+  </div>
+  <div class="right">
+    <ul>
+      <li>水环境治理</li>
+      <li>水生态修复</li>
+      <li class="active">执法监管</li>
+    </ul>
+  </div>
+</header>
+<section>
+  <div class="left">
+    <div class="top">
+      <span class="border b1"></span>
+      <span class="border b2"></span>
+      <span class="border b3"></span>
+      <span class="border b4"></span>
+      <div class="title">河道巡查</div>
+      <table>
+        <tr>
+          <th>编号</th>
+          <th>河道</th>
+          <th>河长</th>
+          <th>级别</th>
+          <th>区域</th>
+        </tr>
+        <tr class="active" id="table">
+          <td>1</td>
+          <td>潘泾</td>
+          <td>陆清华</td>
+          <td>镇（街道）级	</td>
+          <td>罗泾镇</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>潘泾</td>
+          <td>陆清华</td>
+          <td>镇（街道）级	</td>
+          <td>罗泾镇</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>潘泾</td>
+          <td>陆清华</td>
+          <td>镇（街道）级	</td>
+          <td>罗泾镇</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>潘泾</td>
+          <td>陆清华</td>
+          <td>镇（街道）级	</td>
+          <td>罗泾镇</td>
+        </tr>
+      </table>
+    </div>
+    <div class="bottom">
+      <span class="border b1"></span>
+      <span class="border b2"></span>
+      <span class="border b3"></span>
+      <span class="border b4"></span>
+    </div>
+  </div>
+  <div class="center">
+    <span class="border b1"></span>
+    <span class="border b2"></span>
+    <span class="border b3"></span>
+    <span class="border b4"></span>
+    <div id="mapContainer"></div>
+  </div>
+  <div class="right">
+    <div class="top">
+      <span class="border b1"></span>
+      <span class="border b2"></span>
+      <span class="border b3"></span>
+      <span class="border b4"></span>
+    </div>
+    <div class="bottom">
+      <span class="border b1"></span>
+      <span class="border b2"></span>
+      <span class="border b3"></span>
+      <span class="border b4"></span>
+    </div>
+  </div>
+</section>
+
+<script src="js/echarts.min.js"></script>
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=ee15d5aec03ea6f36202adcab91953b3&plugin=AMap.DistrictLayer"></script>
+<!--<script src="js/amaps.js"></script>-->
+<script src="data/module4Data.js"></script>
+<script src="data/module6Data.js"></script>
+<script src="js/module4/riverEcharts4.js"></script>
+<script src="js/module6/riverMap6.js"></script>
+</body>
+</html>

@@ -44,67 +44,99 @@ section .left .top .content .change {
   flex: 1;
   height: 100%;
 }
-section .left .bottom .element ul {
+section .left .bottom .situation ul {
   height: 25px;
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
-  margin: 20px 20px;
-  font-size: 14px;
+  margin: 15px 10px 0 10px;
+  font-size: 17px;
 }
-section .left .bottom .element ul li {
-  padding: 3px 5px;
-  border-radius: 5px;
-  background-color: #3d74aa;
-  cursor: pointer;
-}
-section .left .bottom .element .active {
-  background-color: #46ac88;
-}
-section .left .bottom #water-element {
-  height: calc(100% - 100px);
-}
-section .center {
-  height: 100%;
-}
-section .center .top {
-  height: calc(50% - 10px);
-  overflow: hidden;
-  background-color: #06164a;
-  position: relative;
-  margin-bottom: 20px;
-}
-section .center .top img {
-  width: 80%;
-  transform: translate(15%, -12%);
-}
-section .center .bottom {
-  height: calc(50% - 10px);
-  background-color: #06164a;
-  position: relative;
-}
-section .center .bottom .situation ul {
-  height: 25px;
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-end;
-  margin: 20px 20px 0 20px;
-  font-size: 20px;
-}
-section .center .bottom .situation ul span {
+section .left .bottom .situation ul span {
   color: #75ff93;
 }
-section .center .chart {
+section .left .bottom .chart {
   height: calc(100% - 80px);
   display: flex;
 }
-section .center .chart .pie {
+section .left .bottom .chart .pie {
   height: 100%;
   flex: 3;
 }
-section .center .chart .line {
+section .left .bottom .chart .line {
   height: 100%;
-  flex: 7;
+  flex: 8;
+}
+section .center {
+  height: 100%;
+  background-color: #06164a;
+  position: relative;
+}
+section .center #mapContainer {
+  height: 100%;
+}
+section .center .layer {
+  z-index: 10;
+  background-color: #0a184c;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding-bottom: 10px;
+}
+section .center .layer .name {
+  padding: 2px;
+  text-align: center;
+  background-color: #1d529c;
+}
+section .center .layer .input-item {
+  text-align: center;
+  font-size: 15px;
+  padding: 10px 10px 0 10px;
+}
+section .center .layer .input-item span {
+  padding-left: 5px;
+}
+section .center .timeLine {
+  display: flex;
+  background-color: #1d529c;
+  border-radius: 25px;
+  padding: 5px 10px;
+  z-index: 10;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+section .center .timeLine img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+section .center .timeLine .axis .circle {
+  display: inline-block;
+  vertical-align: middle;
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+section .center .timeLine .axis .line {
+  display: inline-block;
+  vertical-align: middle;
+  height: 2px;
+  width: 18px;
+  background-color: #fff;
+}
+section .center .timeLine .axis .active {
+  box-shadow: 0 0 1px 5px rgba(39, 178, 241, 0.5);
+  background-color: #32c5e9;
+}
+section .center .timeLine .text {
+  color: #fff;
+  font-size: 12px;
+}
+section .center .timeLine .text span {
+  margin-right: 15px;
 }
 section .right .top .content {
   height: calc(100% - 35px);
@@ -121,7 +153,7 @@ section .right .top .content .img {
 }
 section .right .top .content .img .name {
   height: 15%;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
   margin-top: 9%;
   text-align: center;
@@ -143,5 +175,12 @@ section .right .bottom table td {
 section .right .bottom table td,
 section .right .bottom table th {
   border: 1px solid #12606e;
+}
+.amap-logo {
+  display: none;
+  opacity: 0 !important;
+}
+.amap-copyright {
+  opacity: 0;
 }
 /*# sourceMappingURL=riverMap4.css.map */

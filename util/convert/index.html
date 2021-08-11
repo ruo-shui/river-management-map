@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script src="../../data/module6Data.js"></script>
+<script src="../../js/amaps.js"></script>
+<script>
+  window.onload = function () {
+    //坐标转换函数
+    var PI = 3.1415926535897932384626;
+    var a = 6378245.0;
+    var ee = 0.00669342162296594323;
+
+    var wgs84togcj02 = function wgs84togcj02(lng, lat) {
+      var lat = +lat;
+      var lng = +lng;
+      if (out_of_china(lng, lat)) {
+        return [lng, lat]
+      } else {
+        var dlat = transformlat(lng - 105.0, lat - 35.0);
+        var dlng = transformlng(lng - 105.0, lat - 35.0);
+        var radlat = lat / 180.0 * PI;
+        var magic = Math.sin(radlat);
+        magic = 1 - ee * magic * magic;
+        var sqrtmagic = Math.sqrt(magic);
+        dlat = (dlat * 180.0) / ((a * (1 - ee)) / (magic * sqrtmagic) * PI);
+        dlng = (dlng * 180.0) / (a / sqrtmagic * Math.cos(radlat) * PI);
+        var mglat = lat + dlat;
+        var mglng = lng + dlng;
+        return [mglng, mglat]
+      }
+    };
+
+    var transformlat = function transformlat(lng, lat) {
+      var lat = +lat;
+      var lng = +lng;
+      var ret = -100.0 + 2.0 * lng + 3.0 * lat + 0.2 * lat * lat + 0.1 * lng * lat + 0.2 * Math.sqrt(Math.abs(lng));
+      ret += (20.0 * Math.sin(6.0 * lng * PI) + 20.0 * Math.sin(2.0 * lng * PI)) * 2.0 / 3.0;
+      ret += (20.0 * Math.sin(lat * PI) + 40.0 * Math.sin(lat / 3.0 * PI)) * 2.0 / 3.0;
+      ret += (160.0 * Math.sin(lat / 12.0 * PI) + 320 * Math.sin(lat * PI / 30.0)) * 2.0 / 3.0;
+      return ret
+    };
+
+    var transformlng = function transformlng(lng, lat) {
+      var lat = +lat;
+      var lng = +lng;
+      var ret = 300.0 + lng + 2.0 * lat + 0.1 * lng * lng + 0.1 * lng * lat + 0.1 * Math.sqrt(Math.abs(lng));
+      ret += (20.0 * Math.sin(6.0 * lng * PI) + 20.0 * Math.sin(2.0 * lng * PI)) * 2.0 / 3.0;
+      ret += (20.0 * Math.sin(lng * PI) + 40.0 * Math.sin(lng / 3.0 * PI)) * 2.0 / 3.0;
+      ret += (150.0 * Math.sin(lng / 12.0 * PI) + 300.0 * Math.sin(lng / 30.0 * PI)) * 2.0 / 3.0;
+      return ret
+    };
+
+    var out_of_china = function out_of_china(lng, lat) {
+      var lat = +lat;
+      var lng = +lng;
+      // 纬度3.86~53.55,经度73.66~135.05
+      return !(lng > 73.66 && lng < 135.05 && lat > 3.86 && lat < 53.55);
+    };
+
+
+    //下载文件
+    (function (console) {
+      console.save = function (data, filename) {
+        if (!data) {
+          console.error('Console.save: No data')
+          return;
+        }
+        if (!filename) filename = 'console.json'
+        if (typeof data === "object") {
+          data = JSON.stringify(data, undefined, 4)
+        }
+        var blob = new Blob([data], {type: 'text/json'}),
+          e = document.createEvent('MouseEvents'),
+          a = document.createElement('a')
+        a.download = filename
+        a.href = window.URL.createObjectURL(blob)
+        a.dataset.downloadurl = ['text/json', a.download, a.href].join(':')
+        e.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
+        a.dispatchEvent(e)
+      }
+    })(console)
+
+    //坐标转换
+    //面
+    let convertPolygon = function (GeoJSON) {
+      for (let i = 0; i < GeoJSON.features.length; i++) {
+        //Polygon
+        if(GeoJSON.features[i].geometry.type === "Polygon"){
+          for (let j = 0; j < GeoJSON.features[i].geometry.coordinates[0].length; j++) {
+            let coordinates = GeoJSON.features[i].geometry.coordinates[0][j]
+            let lnglat = wgs84togcj02(coordinates[0], coordinates[1])
+            coordinates[0] = lnglat[0]
+            coordinates[1] = lnglat[1]
+          }
+        }
+        //MultiPolygon
+        if(GeoJSON.features[i].geometry.type === "MultiPolygon"){
+          for (let j = 0; j < GeoJSON.features[i].geometry.coordinates.length; j++) {
+            for(let k = 0; k < GeoJSON.features[i].geometry.coordinates[j][0].length; k++){
+              let coordinates = GeoJSON.features[i].geometry.coordinates[j][0][k]
+              let lnglat = wgs84togcj02(coordinates[0], coordinates[1])
+              coordinates[0] = lnglat[0]
+              coordinates[1] = lnglat[1]
+            }
+          }
+        }
+
+      }
+    }
+    //点
+    let convertPoint = function(GeoJSON){
+      for (let i = 0; i < GeoJSON.features.length; i++){
+        let coordinates = GeoJSON.features[i].geometry.coordinates
+        let lnglat = wgs84togcj02(coordinates[0], coordinates[1])
+        coordinates[0] = lnglat[0]
+        coordinates[1] = lnglat[1]
+      }
+    }
+
+    convertPolygon(river)
+    // convertPoint(track)
+    console.save(river, "river.json");
+  }
+</script>
+</body>
+</html>
